@@ -1,8 +1,10 @@
 import axios, { AxiosInstance } from 'axios';
 import { Message } from '../types';
+import { remoteAgentService } from './remoteAgentServiceClean';
 
 class ChatService {
   private api: AxiosInstance;
+  private useRemoteAgent: boolean = false;
 
   constructor() {
     this.api = axios.create({
@@ -11,6 +13,26 @@ class ChatService {
         'Content-Type': 'application/json',
       },
     });
+
+    // Verifica se deve usar agente remoto
+    this.checkRemoteAgentConfig();
+  }
+
+  // Verifica configuração de agente remoto
+  private async checkRemoteAgentConfig(): Promise<void> {
+    try {
+      const agents = remoteAgentService.getAvailableAgents();
+      this.useRemoteAgent = agents.length > 0;
+      
+      if (this.useRemoteAgent) {
+        console.log('✅ Usando serviço de agente remoto');
+      } else {
+        console.log('ℹ️ Usando API local padrão');
+      }
+    } catch (error) {
+      console.error('Erro ao verificar agente remoto:', error);
+      this.useRemoteAgent = false;
+    }
   }
 
   // Configura token de autenticação
@@ -19,22 +41,37 @@ class ChatService {
   }
 
   // Envia mensagem para o chatbot
-  async sendMessage(message: string, sessionId?: string): Promise<Message> {
+  async sendMessage(message: string, sessionId?: string, agentId?: string): Promise<Message> {
     try {
-      const response = await this.api.post('/chat', {
-        message,
-        session_id: sessionId,
-      });
+      let response;
+
+      // Usa agente remoto se configurado
+      if (this.useRemoteAgent) {
+        response = await remoteAgentService.sendMessage(message, sessionId, agentId);
+      } else {
+        // Usa API local padrão
+        const res = await this.api.post('/chat', {
+          message,
+          session_id: sessionId,
+        });
+        response = res.data;
+      }
       
       return {
-        id: response.data.id || Date.now().toString(),
-        content: response.data.content,
+        id: response.id || Date.now().toString(),
+        content: response.content,
         role: 'assistant',
-        timestamp: new Date(response.data.timestamp || Date.now()),
+        timestamp: new Date(response.timestamp || Date.now()),
       };
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error sending message:', error);
-      throw error;
+      
+      // Mensagens de erro amigáveis
+      if (error.message) {
+        throw new Error(error.message);
+      }
+      
+      throw new Error('Erro ao enviar mensagem. Tente novamente.');
     }
   }
 
