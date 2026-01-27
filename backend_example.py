@@ -15,7 +15,12 @@ app = FastAPI(title="LangGraph Chatbot API")
 # Configurar CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Frontend URL
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://192.168.17.179:3000",  # Seu IP local
+        "*"  # Permite todas as origens (use apenas em desenvolvimento)
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -111,4 +116,7 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    print("🚀 Iniciando servidor backend...")
+    print("📍 API disponível em: http://localhost:8000")
+    print("📍 Documentação em: http://localhost:8000/docs")
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")

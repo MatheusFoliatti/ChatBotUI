@@ -6,7 +6,11 @@ import { TypingIndicator } from './TypingIndicator';
 import { useChat } from '../hooks/useChat';
 import '../styles/ChatContainer.css';
 
-export const ChatContainer: React.FC = () => {
+interface ChatContainerProps {
+  onLogout?: () => void;
+}
+
+export const ChatContainer: React.FC<ChatContainerProps> = ({ onLogout }) => {
   const { 
     messages, 
     error, 
@@ -38,16 +42,32 @@ export const ChatContainer: React.FC = () => {
               </p>
             </div>
           </div>
-          <motion.button
-            className="clear-button"
-            onClick={clearMessages}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
-            </svg>
-          </motion.button>
+          <div className="header-actions">
+            <motion.button
+              className="clear-button"
+              onClick={clearMessages}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              title="Limpar conversa"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+              </svg>
+            </motion.button>
+            {onLogout && (
+              <motion.button
+                className="logout-button"
+                onClick={onLogout}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                title="Sair"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                </svg>
+              </motion.button>
+            )}
+          </div>
         </div>
       </header>
 
