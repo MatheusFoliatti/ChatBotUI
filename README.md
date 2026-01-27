@@ -414,16 +414,6 @@ Criar nova sessão
 
 ---
 
-## 🙏 Agradecimentos
-
-- [React](https://react.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [LangGraph](https://github.com/langchain-ai/langgraph)
-- [Shields.io](https://shields.io/) pelos badges
-
----
-
 <div align="center">
 
 **⭐ Se este projeto foi útil, considere dar uma estrela!**
