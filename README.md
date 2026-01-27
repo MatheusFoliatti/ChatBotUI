@@ -5,7 +5,6 @@
   ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
   ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)
   ![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-3178C6?logo=typescript)
-  ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 **Interface web moderna e elegante para chatbots baseados em agentes LangGraph**
 
