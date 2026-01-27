@@ -150,7 +150,7 @@ Esta é uma interface web completa e moderna desenvolvida em **React** com **Typ
 1. **Clone o repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/langgraph-chatbot.git
+git clone https://github.com/MatheusFoliatti/ChatBotUI.git
 cd langgraph-chatbot
 ```
 
