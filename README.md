@@ -151,7 +151,7 @@ Esta é uma interface web completa e moderna desenvolvida em **React** com **Typ
 
 ```bash
 git clone https://github.com/MatheusFoliatti/ChatBotUI.git
-cd langgraph-chatbot
+cd ChatBotUI
 ```
 
 2. **Instale as dependências**
