@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import { Message } from '../types';
-import { remoteAgentService } from './remoteAgentServiceClean';
+import { remoteAgentService } from './remoteAgentService';
 
 class ChatService {
   private api: AxiosInstance;
