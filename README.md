@@ -86,19 +86,11 @@ Esta é uma interface web completa e moderna desenvolvida em **React** com **Typ
 
 ### Tela de Login
 
-```
-
 ![Tela de Login](assets/TelaInicial.png)
-
-```
 
 ### Interface Principal
 
-```
-
 ![Interface Principal](assets/Interacao.png)
-
-```
 
 ---
 

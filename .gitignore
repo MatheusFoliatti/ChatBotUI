@@ -78,6 +78,7 @@ temp/
 # Windows batch scripts
 # =========================
 *.bat
+start.bat
 
 # =========================
 # Uploads / Generated Assets
