@@ -26,8 +26,6 @@
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [API Backend](#-api-backend)
 - [Roadmap](#-roadmap)
-- [Contribuindo](#-contribuindo)
-- [Licença](#-licença)
 
 ---
 
