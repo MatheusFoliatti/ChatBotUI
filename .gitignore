@@ -73,3 +73,13 @@ desktop.ini
 .cache/
 tmp/
 temp/
+
+# =========================
+# Windows batch scripts
+# =========================
+*.bat
+
+# =========================
+# Uploads / Generated Assets
+# =========================
+assets
